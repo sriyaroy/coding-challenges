@@ -6,6 +6,8 @@ After normalization, scale and shift the result using learned parameters gamma (
 (Bonus: implement the backward pass to compute gradients with respect to the inputs, gamma, and beta.)*'''
 
 import numpy as np
+import torch
+import torch.nn as nn
 
 class BatchNorm:
     def __init__(self, num_features, epsilon=1e-5, momentum=0.9):
@@ -27,7 +29,7 @@ class BatchNorm:
         self.running_var = np.ones(num_features)
         self.momentum = momentum
 
-        # Cache for backward pass
+        # Cache for backward pass (if needed)
         self.cache = None
 
     def forward(self, x, training=True):
@@ -43,6 +45,15 @@ class BatchNorm:
         """
         if training:
             # TODO: Compute the batch mean and variance over the mini-batch.
+            rows, cols = x.shape
+            print(x)
+            mean_variance_matrix = np.zeros((2, cols))
+            for c in range(cols):
+                # Calculate the mean
+                mean_variance_matrix[0, c] = np.sum(x[:, c]) / rows
+                # Calculate the variance
+                mean_variance_matrix[1, c] = np.sum(np.square(x[:, c] - mean_variance_matrix[0, c])) / rows
+                
             # TODO: Normalize the input using the computed statistics.
             # TODO: Scale and shift the normalized input using gamma and beta.
             # TODO: Update running_mean and running_var using momentum.
@@ -73,19 +84,43 @@ class BatchNorm:
         dbeta = None  # Replace with your computed gradient w.r.t. beta.
         return dx, dgamma, dbeta
 
-
 # Example usage (for testing purposes, not part of the solution):
 if __name__ == "__main__":
-    # Generate dummy input data: batch_size x num_features
-    x = np.random.randn(10, 5)
+    # Generate dummy input data: batch_size x num_features using NumPy
+    np.random.seed(0)
+    x_np = np.random.randn(10, 5).astype(np.float32)
 
-    # Create a BatchNorm layer instance
-    bn = BatchNorm(num_features=5)
+    # Create our custom BatchNorm layer instance
+    bn_custom = BatchNorm(num_features=5)
 
-    # Forward pass (training mode)
-    out_train = bn.forward(x, training=True)
-    print("Forward pass (training):", out_train)
+    # Forward pass using our custom implementation (training mode)
+    out_custom = bn_custom.forward(x_np, training=True)
+    print("Custom BatchNorm (training):", out_custom)
 
-    # Forward pass (inference mode)
-    out_infer = bn.forward(x, training=False)
-    print("Forward pass (inference):", out_infer)
+    # Forward pass using our custom implementation (inference mode)
+    out_custom_infer = bn_custom.forward(x_np, training=False)
+    print("Custom BatchNorm (inference):", out_custom_infer)
+
+    # ----- Compare with PyTorch's BatchNorm1d -----
+    # Set the same random seed for reproducibility.
+    torch.manual_seed(0)
+    x_torch = torch.from_numpy(x_np)
+
+    # Create a PyTorch BatchNorm1d layer with similar parameters.
+    # Note: Ensure that the momentum and epsilon are set similarly.
+    bn_torch = nn.BatchNorm1d(num_features=5, eps=1e-5, momentum=0.9)
+    bn_torch.train()  # set to training mode
+
+    # Forward pass using PyTorch's implementation
+    out_torch_train = bn_torch(x_torch).detach().numpy()
+    print("PyTorch BatchNorm (training):", out_torch_train)
+
+    bn_torch.eval()  # switch to inference mode
+    out_torch_infer = bn_torch(x_torch).detach().numpy()
+    print("PyTorch BatchNorm (inference):", out_torch_infer)
+
+    # Note:
+    # Comparing your custom implementation to PyTorch's output is a good sanity check.
+    # However, differences in how running averages and momentum are updated might lead
+    # to slight discrepancies. Make sure to align the behavior (especially with the update rules)
+    # when comparing.
