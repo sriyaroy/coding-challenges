@@ -43,10 +43,9 @@ class BatchNorm:
         Returns:
             out (np.ndarray): Batch-normalized output.
         """
+        rows, cols = x.shape
         if training:
-            # TODO: Compute the batch mean and variance over the mini-batch.
-            rows, cols = x.shape
-            print(x)
+            # DONE: Compute the batch mean and variance over the mini-batch.
             mean_variance_matrix = np.zeros((2, cols))
             for c in range(cols):
                 # Calculate the mean
@@ -54,15 +53,39 @@ class BatchNorm:
                 # Calculate the variance
                 mean_variance_matrix[1, c] = np.sum(np.square(x[:, c] - mean_variance_matrix[0, c])) / rows
                 
-            # TODO: Normalize the input using the computed statistics.
-            # TODO: Scale and shift the normalized input using gamma and beta.
-            # TODO: Update running_mean and running_var using momentum.
+            # DONE: Normalize the input using the computed statistics.
+            out = np.zeros((rows, cols))
+            for c in range(cols):
+                # subtract mean
+                out[:, c] = x[:, c] - mean_variance_matrix[0, c]
+                # divide by standard deviation + epsilon
+                out[:, c] = out[:, c] / (np.sqrt(mean_variance_matrix[1, c]) + self.epsilon)
+
+            # DONE: Scale and shift the normalized input using gamma and beta.
+            out = out * self.gamma + self.beta
+
+            # DONE: Update running_mean and running_var using momentum.
+            for c in range(cols):
+                # Calculate the running mean using momentum
+                self.running_mean = self.momentum * self.running_mean[c] + (1 - self.momentum) * mean_variance_matrix[0, c]
+
+                # Calculate the running var using momentum
+                self.running_var = self.momentum * self.running_var[c] + (1 - self.momentum) * mean_variance_matrix[1, c]
             # Save necessary variables in self.cache for use in the backward pass.
-            out = None  # Replace with your computed output.
+            
+            self.cache = [x, out, mean_variance_matrix, self.gamma, self.epsilon]
         else:
-            # TODO: Normalize using the running statistics (running_mean and running_var).
-            # TODO: Scale and shift the normalized input.
-            out = None  # Replace with your computed output.
+            # DONE: Normalize using the running statistics (running_mean and running_var).
+            out = np.zeros((rows, cols))
+            for c in range(cols):
+                out[:, c] = x[:, c] - self.running_mean[c]
+
+                # normalise with std
+                out[:, c] = out[:, c] / (np.sqrt(self.running_var[c]) + self.epsilon)
+
+            # DONE: Scale and shift the normalized input.
+            out = out * self.gamma + self.beta
+            
 
         return out
 
