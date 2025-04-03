@@ -1,6 +1,6 @@
 '''Write a function to perform random image augmentations such as horizontal flips, small rotations (e.g., ±15°), 
 and brightness adjustments. The function should take an input image and return a new, randomly transformed image. 
-You can use libraries like OpenCV (cv2.flip, cv2.warpAffine for rotation) or PIL (ImageOps, etc.) to apply these transformations. 
+You can use libraries like OpenCV or PIL to apply these transformations. 
 Ensure that each augmentation is applied with some probability or random magnitude to simulate how it is done during training. 
 This tests familiarity with common augmentation techniques to make models more generalizable.'''
 
@@ -13,7 +13,6 @@ import random
 def random_augmentation(image):
 
     random_mag = random.random()
-    print(random_mag)
     if random_mag < 0.33:
         image = horizontal_flip(image)
     if 0.33 < random_mag < 0.66:
