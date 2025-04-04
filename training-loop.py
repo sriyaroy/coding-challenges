@@ -14,22 +14,23 @@ from torch.utils.data import DataLoader, TensorDataset
 class YourModel(nn.Module):
     def __init__(self, input_size, hidden_size, output_size):
         super(YourModel, self).__init__()
-        # TODO: Define your layers, for example:
-        # self.fc1 = nn.Linear(input_size, hidden_size)
-        # self.relu = nn.ReLU()
-        # self.fc2 = nn.Linear(hidden_size, output_size)
+        # DONE: Define your layers:
+        self.fc1 = nn.Linear(input_size, hidden_size)
+        self.relu = nn.ReLU()
+        self.fc2 = nn.Linear(hidden_size, hidden_size)
+        self.relu2 = nn.ReLU()
+        self.fc3 = nn.Linear(hidden_size, output_size)
     
     def forward(self, x):
-        # TODO: Implement the forward pass
-        # Example:
-        # x = self.fc1(x)
-        # x = self.relu(x)
-        # x = self.fc2(x)
-        # return x
-        pass  # Remove this once you implement the forward method
+        # DONE: Implement the forward pass
+        x = self.fc1(x)
+        x = self.relu(x)
+        x = self.fc2(x)
+        x = self.relu2(x)
+        x = self.fc2(x)
+        return x
 
-# Create a dummy dataset (replace with your actual data as needed)
-# For example, 100 samples with 10 features each and binary targets.
+# Create a dummy dataset
 inputs = torch.randn(100, 10)          
 targets = torch.randint(0, 2, (100,))    
 
@@ -44,22 +45,27 @@ optimizer = optim.SGD(model.parameters(), lr=0.01)  # Or use another optimizer
 # Training loop scaffolding
 num_epochs = 10  # Set the number of epochs as desired
 for epoch in range(num_epochs):
+    running_loss = 0.0
     for batch_inputs, batch_targets in dataloader:
-        print(epoch)
-        # TODO: Zero out gradients from the previous iteration
-        # Example: optimizer.zero_grad()
+        # DONE: Zero out gradients from the previous iteration
+        optimizer.zero_grad()
 
-        # TODO: Perform the forward pass to compute outputs from the model
-        # Example: outputs = model(batch_inputs)
+        # DONE: Perform the forward pass to compute outputs from the model
+        ouptuts = model.forward(batch_inputs)
 
-        # TODO: Compute the loss using the loss function and the model outputs
-        # Example: loss = criterion(outputs, batch_targets)
+        # DONE: Compute the loss using the loss function and the model outputs
+        loss = criterion(ouptuts, batch_targets)
 
-        # TODO: Perform the backward pass to compute gradients
-        # Example: loss.backward()
+        # DONE: Perform the backward pass to compute gradients
+        loss.backward()
 
-        # TODO: Update the model parameters using the optimizer
-        # Example: optimizer.step()
+        # DONE: Update the model parameters using the optimizer
+        optimizer.step()
 
-    # TODO: Optionally, add code here to print or log training statistics for each epoch.
-    # Example: print(f"Epoch {epoch+1}/{num_epochs} completed")
+        
+        # Adding the running loss
+        running_loss += loss.item() * batch_inputs.size(0)
+
+    # DONE: Optionally, add code here to print or log training statistics for each epoch.
+    epoch_loss = running_loss / len(dataloader.dataset)
+    print(f'Epoch {epoch}: completed. Loss computed: {epoch_loss}')
