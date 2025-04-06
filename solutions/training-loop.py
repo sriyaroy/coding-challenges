@@ -2,7 +2,6 @@
 Write a PyTorch training loop without using any high-level training utilities. 
 Given a model, an optimizer, and a loss function, loop over mini-batches for several epochs: 
 perform a forward pass, compute the loss, call backward() to compute gradients, and then optimizer.step() to update parameters. 
-Do not forget to zero the gradients (optimizer.zero_grad()) each iteration. This tests your understanding of the training process.
 '''
 
 import torch
