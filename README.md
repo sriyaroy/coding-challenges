@@ -24,8 +24,8 @@ Welcome to the **ML Engineering Challenges** repository! 🎉 This repo will hav
 - **Skill Improvement**: Enhance your problem-solving and coding abilities in key ML areas. 📈
 
 ## Love or Hate? 
-Take a minute and share your thoughts (anonymously) so I can make this page better 🫶🏽 : https://forms.gle/M79XckyHAUK1qD2d6
-I will implement as many changes as I can!
+- Take a minute and share your thoughts (anonymously) so I can make this page better 🫶🏽 : https://forms.gle/M79XckyHAUK1qD2d6
+- I will implement as many changes as I can!
 
 ## How to Get Started 🚀
 
