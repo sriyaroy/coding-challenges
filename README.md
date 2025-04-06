@@ -6,22 +6,26 @@ Welcome to the **ML Engineering Challenges** repository! 🎉 This repo is has *
 
 ## What's Inside? 📂
 
-- **50 Diverse Challenges**: Contents (being filled as I fill the repo):
-  - [Batch Normalisation from Scratch](https://github.com/sriyaroy/coding-challenges/blob/main/problems/batch-norm.py)
 - **Levels of Difficulty**:
   - **Easy**🏃‍♂️
   - **Medium**💡
   - **Hard**🚀
-- **Hands-On Python Code**: Each challenge comes with scaffold code to get started. This can be found in the problems folder 🐍
+- **Contents**: (filling as I write the solutions):
+  - 🚀[Batch Normalisation from Scratch](https://github.com/sriyaroy/coding-challenges/blob/main/problems/batch-norm.py)
+  - 🏃‍♂️[Simple Image Data Augmentation Pipeline](https://github.com/sriyaroy/coding-challenges/blob/main/problems/image-aug-pipeline.py)
+  - 💡[Optimise Image Processing with Vectorisation](https://github.com/sriyaroy/coding-challenges/blob/main/problems/numpy-vectorisation.py)
+  - 💡[PyTorch Training Loop from Scratch](https://github.com/sriyaroy/coding-challenges/blob/main/problems/training-loop.py)
+- **Hands-On Python Code**: Each challenge comes with scaffold code to get started. This can be found in the 'Problems' folder and solutions in the 'Solutions' folder 🐍
+- **Solutions**: Every solution is my own and if you have a better approach, please share 👩🏽‍💻
 
 ## Why Use This Repo? 🤔
 
 - **Interview Preparation**: Mirror/simulate the challenges you could face in technical interviews. 🎤
 - **Skill Improvement**: Enhance your problem-solving and coding abilities in key ML areas. 📈
-- **Community-Driven Learning**: Share your solutions, learn from others, and contribute! 🌐
 
 ## Love or Hate? 
-Take a minute and share your thoughts so I can make this page better 🫶🏽 : 
+Take a minute and share your thoughts (anonymously) so I can make this page better 🫶🏽 : https://forms.gle/M79XckyHAUK1qD2d6
+I will implement as many changes as I can!
 
 ## How to Get Started 🚀
 
