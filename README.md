@@ -1,11 +1,13 @@
 # ML Engineering Interview Challenges 🚀💻
 
-Welcome to the **ML Engineering Challenges** repository! 🎉 This repo is has **50 challenges** ranging from **Easy** to **Hard** that are designed to help you sharpen ML engineering skills. (Many of these challenges have been designed with a Computer Vision engineer in mind as I've found it hard to find targeted resources, however, many of the challenges are transferrable)
+Welcome to the **ML Engineering Challenges** repository! 🎉 This repo is has **50 challenges** ranging from **Easy** to **Hard** that are designed to help you sharpen ML engineering skills. 
+
+#### (Many of these challenges have been designed with a Computer Vision engineer in mind as I've found it hard to find targeted resources, however, many of the challenges are transferrable!)
 
 ## What's Inside? 📂
 
 - **50 Diverse Challenges**: Contents (being filled as I fill the repo):
-  - [Batch Normalisation from Scratch]
+  - [Batch Normalisation from Scratch](https://github.com/sriyaroy/coding-challenges/blob/main/problems/batch-norm.py)
 - **Levels of Difficulty**:
   - **Easy**🏃‍♂️
   - **Medium**💡
