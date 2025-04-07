@@ -22,12 +22,7 @@ Welcome to the **ML Engineering Challenges** repository! 🎉 This repo will hav
 - **Hands-On Python Code**: Each challenge comes with scaffold code to get started. This can be found in the 'Problems' folder and solutions in the 'Solutions' folder 🐍
 - **Solutions**: Every solution is my own and if you have a better approach, please share 👩🏽‍💻
 
-## Why Use This Repo? 🤔
-
-- **Interview Preparation**: Mirror/simulate the challenges you could face in technical interviews. 🎤
-- **Skill Improvement**: Enhance your problem-solving and coding abilities in key ML areas. 📈
-
-## Love or Hate? 
+## Love or Hate? 🤔
 - Take a minute and share your thoughts (anonymously) so I can make this page better 🫶🏽 : https://forms.gle/M79XckyHAUK1qD2d6
 - I will implement as many changes as I can!
 
