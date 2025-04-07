@@ -16,9 +16,9 @@ Welcome to the **ML Engineering Challenges** repository! 🎉 This repo will hav
   - 💡[Optimise Image Processing with Vectorisation](https://github.com/sriyaroy/coding-challenges/blob/main/problems/numpy-vectorisation.py)
   - 💡[PyTorch Training Loop from Scratch](https://github.com/sriyaroy/coding-challenges/blob/main/problems/training-loop.py)
   - 💡2D Convolution from Scratch using Numpy
-  - - [No padding, dilation or stride]
-  - - [Only padding]
-  - - [Padding, stride & dilation]
+    - [No padding, dilation or stride](https://github.com/sriyaroy/coding-challenges/blob/main/problems/2D-convolution-only.py)
+    - [Only padding]
+    - [Padding, stride & dilation]
 - **Hands-On Python Code**: Each challenge comes with scaffold code to get started. This can be found in the 'Problems' folder and solutions in the 'Solutions' folder 🐍
 - **Solutions**: Every solution is my own and if you have a better approach, please share 👩🏽‍💻
 
